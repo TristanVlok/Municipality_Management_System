@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Municipality_Management_System.Models.Citizen>
+
+@{ViewData["Title"] = "Citizens";}
+
+<head>
+    <style>
+        
+        body {
+            background-color: #f7f7f7; 
+            font-family: 'Arial', sans-serif;
+            color: #2a2a2a; 
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: #4b8b3b; 
+        }
+
+        
+        .btn-primary {
+            background-color: #3c8d99; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #336c7b; 
+            }
+
+        
+        input, select, textarea {
+            background-color: #fff;
+            border: 1px solid #dcdcdc; 
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+            input:focus, select:focus, textarea:focus {
+                border-color: #4b8b3b; 
+                outline: none;
+            }
+
+       
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #f4c542; 
+        }
+
+        
+        .navbar {
+            background-color: #4b8b3b; 
+            padding: 15px;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px;
+                margin-right: 15px;
+            }
+
+                .navbar a:hover {
+                    background-color: #f4c542; 
+                    color: white;
+                }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+       
+        .navbar {
+            background-color: #4b8b3b; 
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+                .navbar a:hover {
+                    background-color: #f4c542;
+                    color: white;
+                    border-radius: 5px;
+                }
+
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/" class="navbar-brand">Municipality Management</a>
+        <div class="navbar-links">
+            <a href="/Citizen/Index">Citizens</a>
+            <a href="/Staff/Index">Staff</a>
+            <a href="/ServiceRequest/Index">ServiceRequests</a>
+            <a href="/Report/Index">Reports</a>
+        </div>
+    </div>
+
+<h1 class="content">Welcome to Tristan's' Municipality Management System</h1>
+			
+    
+<h2>Citizens List</h2>
+
+<table >
+    <thead>
+        <tr>
+
+            <th>Citizen ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Features</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CitizenID</td>
+                <td>@item.FullName</td>
+                <td>@item.Email</td>
+                <td>
+                        <a href="@Url.Action("Edit", new { id = item.CitizenID })"><button>Edit</button></a> 
+                        <a href="@Url.Action("Delete", new { id = @item.CitizenID })"><button>Delete</button></a>
+                        <a href="@Url.Action("Details", new { id = @item.CitizenID })"><button>Details</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+	</table>
+    <a href="@Url.Action("Create")"><button>Create Citizen</button></a>
+</body>

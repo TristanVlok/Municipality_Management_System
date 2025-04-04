@@ -1,0 +1,148 @@
+﻿@model Municipality_Management_System.Models.Staff
+
+@{
+    ViewData["Title"] = "Details Staff";
+}
+<head>
+    <style>
+
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+            color: #2a2a2a;
+        }
+
+        h1, h2, h3, h4, h5 {
+            color: #4b8b3b;
+        }
+
+
+        .btn-primary {
+            background-color: #3c8d99;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #336c7b;
+            }
+
+
+        input, select, textarea {
+            background-color: #fff;
+            border: 1px solid #dcdcdc;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+            input:focus, select:focus, textarea:focus {
+                border-color: #4b8b3b;
+                outline: none;
+            }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #f4c542;
+        }
+
+
+        .navbar {
+            background-color: #4b8b3b;
+            padding: 15px;
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px;
+                margin-right: 15px;
+            }
+
+                .navbar a:hover {
+                    background-color: #f4c542;
+                    color: white;
+                }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #4b8b3b;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+                .navbar a:hover {
+                    background-color: #f4c542;
+                    color: white;
+                    border-radius: 5px;
+                }
+
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+
+<h2> Staff Details of @Model.FullName</h2>
+
+<form method="post" action="@Url.Action("Details", new { id = Model.StaffID }) ">
+    @Html.HiddenFor(model => model.StaffID)
+
+    <label for="StaffID">Staff ID:</label>
+    <label>@Model.StaffID</label>
+    <br />
+    <label for="FullName">Full Name:</label>
+    <label>@Model.FullName</label>
+    <br />
+    <label for="Position">Position:</label>
+    <label>@Model.Position</label>
+    <br />
+    <label for="Department">Department:</label>
+    <label>@Model.Department</label>
+    <br />
+    <label for="Email">Email:</label>
+    <label>@Model.Email</label>
+    <br />
+    <label for="PhoneNumber">Phone Number:</label>
+    <label>@Model.PhoneNumber</label>
+    <br />
+    <label for="HireDate">Hire Date:</label>
+    <label>@Model.HireDate</label>
+    <br />
+    <button><a href="@Url.Action("Index")">Back To Index</a></button>
+</form>
